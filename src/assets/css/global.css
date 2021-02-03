@@ -1,0 +1,31 @@
+:root {
+	--main-color: white;
+	--secondary-color: hsl(0, 0%, 60%);
+	--spacing: 8px;
+}
+
+* {
+	font-family: "Roboto", sans-serif;
+}
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-image: url("../images/tablecloth.jpg");
+}
+
+#root {
+	height: 100%;
+}
+
+h1,
+h2 {
+	text-align: center;
+}
+
+h3 {
+	margin: 0;
+	padding: 0;
+}
