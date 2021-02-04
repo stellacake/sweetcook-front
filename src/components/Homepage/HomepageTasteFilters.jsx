@@ -18,7 +18,7 @@ function HomepageTasteFilters() {
 			<div className="taste-filters">
 				{tastes &&
 					tastes.map((taste) => (
-						<div className="taste-button">
+						<div key={taste.id} className="taste-button">
 							<img src={taste.picture} alt={taste.name} />
 							<p>{taste.name}</p>
 						</div>

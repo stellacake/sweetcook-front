@@ -10,6 +10,7 @@
 }
 
 /* _____HomepageBrand_____ */
+
 .brand-label {
 	width: 60%;
 	height: 50vh;
@@ -82,6 +83,7 @@
 }
 
 /* _____HomepageTasteFilters_____ */
+
 .taste-filters {
 	display: flex;
 	margin: 0 16px;
