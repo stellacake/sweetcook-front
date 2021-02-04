@@ -1,0 +1,66 @@
+.personal-space {
+	height: 100%;
+	padding-bottom: 64px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.personal-space-img {
+	height: 40px;
+	margin: 0 16px;
+}
+
+.personal-space-actions {
+	height: 88px;
+	width: 16px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	position: absolute;
+	top: 0;
+	right: 8px;
+	margin: 16px;
+}
+
+.personal-space-buttons button {
+	margin: 0 16px;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.personal-space-modal-open {
+	width: 100%;
+	min-height: -webkit-fill-available;
+	overflow-y: initial;
+	position: fixed;
+	top: 0;
+	z-index: 10;
+	background-color: #d3edf2;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.personal-space-modal-open img {
+	height: 40px;
+	position: fixed;
+	top: 8px;
+	left: 8px;
+}
+
+.overflow {
+	height: 100vh;
+	overflow-y: auto;
+}
+
+.personal-space-card {
+	position: relative;
+}
+
+.personal-space-actions img {
+	width: 16px;
+}

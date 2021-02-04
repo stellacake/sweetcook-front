@@ -2,9 +2,9 @@
 	height: 56px;
 	width: 100vw;
 	position: fixed;
-	top: 0px;
+	bottom: 0px;
 	background-color: white;
-	box-shadow: 0px 2px 4px 0px grey;
+	box-shadow: 0px -2px 4px 0px grey;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -13,5 +13,6 @@
 
 .navbar img {
 	height: 40px;
-	margin: 0 8px;
+	margin: 0 16px;
+	cursor: pointer;
 }

@@ -17,7 +17,19 @@ function HomepageLatest() {
 	return (
 		<div className="latest">
 			<h2>Dernières recettes</h2>
-			<HomepageRecipeCard recipes={recipes} />
+			{recipes.map((recipe) => (
+				<HomepageRecipeCard
+					key={recipe.id_recipe}
+					id_recipe={recipe.id_recipe}
+					picture={recipe.picture}
+					title={recipe.title}
+					name={recipe.name}
+					date={recipe.date}
+					duration={recipe.duration}
+					level={recipe.level}
+					taste={recipe.taste}
+				/>
+			))}
 		</div>
 	);
 }
