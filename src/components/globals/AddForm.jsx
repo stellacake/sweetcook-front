@@ -102,111 +102,123 @@ function AddForm() {
 
 	return (
 		<>
-			<form className="add-recipe-form" onSubmit={createRecipe}>
-				<label htmlFor="name">
-					Sélection de votre nom
-					<select
-						id="name"
-						name="name"
-						type="text"
-						onChange={(e) => setUserRecipe(e.target.value)}
-					>
-						<option value=""> </option>
-						{users &&
-							users.map((user) => (
-								<option key={user.id} value={user.id}>
-									{user.name}
-								</option>
+			<form onSubmit={createRecipe}>
+				<div className="add-recipe-form">
+					<div className="form-block">
+						<label htmlFor="name">
+							Sélection de votre nom
+							<select
+								id="name"
+								name="name"
+								type="text"
+								onChange={(e) => setUserRecipe(e.target.value)}
+							>
+								<option value=""> </option>
+								{users &&
+									users.map((user) => (
+										<option key={user.id} value={user.id}>
+											{user.name}
+										</option>
+									))}
+							</select>
+						</label>
+						<label htmlFor="duration">
+							Titre de la recette
+							<input
+								id="title"
+								name="title"
+								type="text"
+								onChange={handleChange}
+							/>
+						</label>
+						<label htmlFor="quantity">
+							Quantité (nb de personnes ou parts)
+							<input
+								id="quantity"
+								name="quantity"
+								type="text"
+								onChange={handleChange}
+							/>
+						</label>
+						<label htmlFor="picture">
+							Photo
+							<input
+								id="picture"
+								name="picture"
+								type="url"
+								onChange={handleChange}
+							/>
+						</label>
+						<label htmlFor="duration">
+							Durée (en minutes)
+							<input
+								type="number"
+								id="duration"
+								name="duration"
+								min="5"
+								max="180"
+								step="5"
+								onChange={handleChange}
+							/>
+						</label>
+						<label htmlFor="level_id">
+							Sélection de la difficulté
+							<select
+								id="level_id"
+								name="level_id"
+								type="text"
+								onChange={handleChange}
+							>
+								<option value=""> </option>
+								<option value="1">easy</option>
+								<option value="2">challenging</option>
+								<option value="3">hard</option>
+							</select>
+						</label>
+						<label htmlFor="taste_id">
+							Sélection du goût
+							<select
+								id="taste_id"
+								name="taste_id"
+								type="text"
+								placeholder="goût"
+								onChange={handleChange}
+							>
+								<option value=""> </option>
+								<option value="1">sucré</option>
+								<option value="2">salé</option>
+							</select>
+						</label>
+					</div>
+					<div className="form-block">
+						<label htmlFor="ingredients">
+							Ajouter des ingrédients
+							{number.map((item, index) => (
+								<input
+									key={index}
+									id={`ingredient_${item}`}
+									name={`ingredient_${item}`}
+									type="text"
+									onChange={handleChange}
+								/>
 							))}
-					</select>
-				</label>
-				<label htmlFor="duration">
-					Titre de la recette
-					<input id="title" name="title" type="text" onChange={handleChange} />
-				</label>
-				<label htmlFor="quantity">
-					Quantité (nb de personnes ou parts)
-					<input
-						id="quantity"
-						name="quantity"
-						type="text"
-						onChange={handleChange}
-					/>
-				</label>
-				<label htmlFor="picture">
-					Photo
-					<input
-						id="picture"
-						name="picture"
-						type="url"
-						onChange={handleChange}
-					/>
-				</label>
-				<label htmlFor="ingredients">
-					Ajouter des ingrédients
-					{number.map((item, index) => (
-						<input
-							key={index}
-							id={`ingredient_${item}`}
-							name={`ingredient_${item}`}
-							type="text"
-							onChange={handleChange}
-						/>
-					))}
-				</label>
-
-				<label htmlFor="steps">
-					Ajouter des instructions
-					{number.map((item, index) => (
-						<input
-							key={index}
-							id={`step_${item}`}
-							name={`step_${item}`}
-							type="text"
-							onChange={handleChange}
-						/>
-					))}
-				</label>
-				<label htmlFor="duration">
-					Durée (en minutes)
-					<input
-						type="number"
-						id="duration"
-						name="duration"
-						min="5"
-						max="180"
-						step="5"
-						onChange={handleChange}
-					/>
-				</label>
-				<label htmlFor="level_id">
-					Sélection de la difficulté
-					<select
-						id="level_id"
-						name="level_id"
-						type="text"
-						onChange={handleChange}
-					>
-						<option value=""> </option>
-						<option value="1">easy</option>
-						<option value="2">challenging</option>
-						<option value="3">hard</option>
-					</select>
-				</label>
-				<label htmlFor="taste_id">
-					Sélection du goût
-					<select
-						id="taste_id"
-						name="taste_id"
-						type="text"
-						placeholder="goût"
-						onChange={handleChange}
-					>
-						<option value=""> </option>
-						<option value="1">sucré</option>
-						<option value="2">salé</option>
-					</select>
-				</label>
+						</label>
+					</div>
+					<div className="form-block">
+						<label htmlFor="steps">
+							Ajouter des instructions
+							{number.map((item, index) => (
+								<input
+									key={index}
+									id={`step_${item}`}
+									name={`step_${item}`}
+									type="text"
+									onChange={handleChange}
+								/>
+							))}
+						</label>
+					</div>
+				</div>
 				<button type="submit">Ajouter !</button>
 			</form>
 			{modalOpen && (

@@ -1,13 +1,9 @@
 .add-recipe {
 	min-height: 100vh;
 	padding-bottom: 64px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 }
 
-.add-recipe-form {
+form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -19,4 +15,13 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+}
+
+@media screen and (min-width: 1024px) {
+	.add-recipe-form {
+		width: 85%;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
 }

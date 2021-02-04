@@ -29,7 +29,7 @@
 .brand {
 	font-family: "Yusei Magic", sans-serif;
 	margin-bottom: 0;
-	font-size: 2em;
+	font-size: 40px;
 }
 
 /* _____HomepageLatest_____ */
@@ -96,14 +96,60 @@
 	width: 45%;
 	border-radius: 8px;
 	cursor: pointer;
+	position: relative;
 }
 
 .taste-button img {
-	height: 88px;
+	height: inherit;
 	width: 100%;
 	object-fit: cover;
 	object-position: center;
 	margin: 0;
 	padding: 0;
 	border-radius: inherit;
+}
+
+.taste-button p {
+	display: block;
+	width: 100%;
+	top: -24px;
+	text-align: center;
+	color: white;
+	text-transform: uppercase;
+	text-shadow: black 1px 0 10px;
+	font-size: 32px;
+	font-weight: 900;
+	line-height: 88px;
+	position: absolute;
+
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+	.latest {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.taste-button {
+		height: 160px;
+		width: 320px;
+		margin: 0 32px;
+		border-radius: 8px;
+		cursor: pointer;
+	}
+
+	.taste-button p {
+		line-height: 160px;
+	}
+
+	.list {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+	}
 }

@@ -20,7 +20,7 @@
 	align-items: center;
 	justify-content: space-around;
 	position: absolute;
-	top: 0;
+	top: -16px;
 	right: 8px;
 	margin: 16px;
 }
@@ -50,10 +50,12 @@
 	position: fixed;
 	top: 8px;
 	left: 8px;
+	cursor: pointer;
 }
 
 .overflow {
 	height: 100vh;
+	width: 100%;
 	overflow-y: auto;
 }
 
@@ -63,4 +65,18 @@
 
 .personal-space-actions img {
 	width: 16px;
+	cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+	.personal-space-list {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.personal-space-actions {
+		top: 0;
+	}
 }

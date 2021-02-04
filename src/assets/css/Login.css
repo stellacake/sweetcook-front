@@ -13,6 +13,10 @@
 	justify-content: center;
 }
 
-input {
+label {
 	margin-bottom: 16px;
+}
+
+input {
+	margin-bottom: 8px;
 }

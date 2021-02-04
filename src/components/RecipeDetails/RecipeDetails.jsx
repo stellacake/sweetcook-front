@@ -27,28 +27,28 @@ function RecipeDetails({ match }) {
 				src={recipe.picture}
 				alt={recipe.title}
 			/>
-			<div>
-				<p>
-					recette ajoutée le {recipe.date} par {recipe.name}
-				</p>
-				<div className="recipe-card-legend">
-					<div className="recipe-card-legend-item">
-						<img src={IconTime} alt="durée" />
-						<p>durée : {recipe.duration} min</p>
-					</div>
-					<div className="recipe-card-legend-item">
-						<img src={IconWhisk} alt="difficulté" />
-						<p>difficulté : {recipe.level}</p>
-					</div>
-					<div className="recipe-card-legend-item">
-						<img
-							src={recipe.taste === "salé" ? IconSalty : IconSweet}
-							alt="goût"
-						/>
-						<p>goût : {recipe.taste}</p>
-					</div>
+			<p>
+				recette ajoutée le {recipe.date} par {recipe.name}
+			</p>
+			<div className="recipe-card-legend">
+				<div className="recipe-card-legend-item">
+					<img src={IconTime} alt="durée" />
+					<p>durée : {recipe.duration} min</p>
 				</div>
-				<div>
+				<div className="recipe-card-legend-item">
+					<img src={IconWhisk} alt="difficulté" />
+					<p>difficulté : {recipe.level}</p>
+				</div>
+				<div className="recipe-card-legend-item">
+					<img
+						src={recipe.taste === "salé" ? IconSalty : IconSweet}
+						alt="goût"
+					/>
+					<p>goût : {recipe.taste}</p>
+				</div>
+			</div>
+			<div className="recipe-instructions">
+				<div className="recipe-ingredients">
 					<h2>Ingrédients</h2>
 					<ul>
 						{recipe.ingredient_1 && <li>{recipe.ingredient_1}</li>}
@@ -63,7 +63,7 @@ function RecipeDetails({ match }) {
 						{recipe.ingredient_10 && <li>{recipe.ingredient_10}</li>}
 					</ul>
 				</div>
-				<div>
+				<div className="recipe-steps">
 					<h2>&Eacute;tapes</h2>
 					<ol>
 						{recipe.step_1 && <li>{recipe.step_1}</li>}

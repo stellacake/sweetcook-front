@@ -47,32 +47,34 @@ function PersonalSpace() {
 					alt="ajouter une recette"
 				/>
 			</Link>
-			{recipes.map((recipe) => (
-				<div className="personal-space-card" key={recipe.id_recipe}>
-					<HomepageRecipeCard
-						id_recipe={recipe.id_recipe}
-						picture={recipe.picture}
-						title={recipe.title}
-						name={recipe.name}
-						date={recipe.date}
-						duration={recipe.duration}
-						level={recipe.level}
-						taste={recipe.taste}
-					/>
-					<div className="personal-space-actions">
-						<img
-							onClick={(e) => handleEdit(recipe.id_recipe)}
-							src={IconEdit}
-							alt="modifier"
+			<div className="personal-space-list">
+				{recipes.map((recipe) => (
+					<div className="personal-space-card" key={recipe.id_recipe}>
+						<HomepageRecipeCard
+							id_recipe={recipe.id_recipe}
+							picture={recipe.picture}
+							title={recipe.title}
+							name={recipe.name}
+							date={recipe.date}
+							duration={recipe.duration}
+							level={recipe.level}
+							taste={recipe.taste}
 						/>
-						<img
-							onClick={(e) => handleDelete(recipe.title, recipe.id_recipe)}
-							src={IconDelete}
-							alt="Supprimer"
-						/>
+						<div className="personal-space-actions">
+							<img
+								onClick={(e) => handleEdit(recipe.id_recipe)}
+								src={IconEdit}
+								alt="modifier"
+							/>
+							<img
+								onClick={(e) => handleDelete(recipe.title, recipe.id_recipe)}
+								src={IconDelete}
+								alt="Supprimer"
+							/>
+						</div>
 					</div>
-				</div>
-			))}
+				))}
+			</div>
 			{editModal && (
 				<div className="personal-space-modal-open">
 					<img

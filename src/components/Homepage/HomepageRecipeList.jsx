@@ -4,7 +4,7 @@ import "../../assets/css/styles.css";
 
 function HomepageRecipeList({ recipes }) {
 	return (
-		<>
+		<div className="list">
 			{recipes.map((recipe) => (
 				<HomepageRecipeCard
 					key={recipe.id_recipe}
@@ -18,7 +18,7 @@ function HomepageRecipeList({ recipes }) {
 					taste={recipe.taste}
 				/>
 			))}
-		</>
+		</div>
 	);
 }
 
