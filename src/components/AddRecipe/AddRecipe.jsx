@@ -36,11 +36,13 @@ function AddRecipe() {
 
 	const [userRecipe, setUserRecipe] = useState("");
 
-	let today = new Date();
-	let dd = String(today.getDate()).padStart(2, "0");
-	let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-	let yyyy = today.getFullYear();
-	today = yyyy + "-" + mm + "-" + dd;
+	const getDate = () => {
+		let today = new Date();
+		let dd = String(today.getDate()).padStart(2, "0");
+		let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+		let yyyy = today.getFullYear();
+		return yyyy + "-" + mm + "-" + dd;
+	};
 
 	const handleChange = (e) => {
 		setRecipe({
@@ -83,7 +85,7 @@ function AddRecipe() {
 					.post(`${process.env.REACT_APP_API}/users/recipes`, {
 						user_id: Number(userRecipe),
 						recipe_id: data.id,
-						date: "2020-02-05",
+						date: getDate(),
 					})
 					.then(
 						() => setFormMessage(`Votre recette a bien été ajoutée !`),
