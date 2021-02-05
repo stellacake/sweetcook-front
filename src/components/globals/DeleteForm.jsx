@@ -32,7 +32,7 @@ function DeleteForm({ recipeId, recipeTitle, setDeleteModal, deleteModal }) {
 		<div className="personal-space-modal-open">
 			<h2>Êtes-vous sûr(e) de vouloir supprimer "{recipeTitle}" ?</h2>
 			<div className="personal-space-buttons">
-				<button onClick={() => setDeleteModal(!deleteModal)}>Annuler</button>
+				<button onClick={setDeleteModal(!deleteModal)}>Annuler</button>
 				<button onClick={() => handleDelete()}>Confirmer</button>
 			</div>
 			{modalOpen && (

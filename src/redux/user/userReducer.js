@@ -5,7 +5,6 @@ import {
 	FETCH_USER_ACCESS_REQUEST,
 	FETCH_USER_ACCESS_SUCCESS,
 	FETCH_USER_ACCESS_FAILURE,
-	// USER_STATUS_CHANGED,
 } from "./userTypes";
 
 const initialState = {
@@ -51,11 +50,6 @@ const userReducer = (state = initialState, action) => {
 				...state,
 				isAuthenticated: false,
 			};
-		// case USER_STATUS_CHANGED:
-		// 	return {
-		// 		...state,
-		// 		status: action.payload,
-		// 	};
 		default:
 			return state;
 	}

@@ -6,7 +6,6 @@ import {
 	FETCH_USER_ACCESS_REQUEST,
 	FETCH_USER_ACCESS_SUCCESS,
 	FETCH_USER_ACCESS_FAILURE,
-	// USER_STATUS_CHANGED,
 } from "./userTypes";
 
 export const fetchUserTokenRequest = () => {
@@ -54,7 +53,7 @@ export const fetchUserAccessFailure = () => {
 	};
 };
 
-export const fetchUserAccess = (token, status) => {
+export const fetchUserAccess = (token) => {
 	return (dispatch) => {
 		dispatch(fetchUserAccessRequest());
 		axios
@@ -75,10 +74,3 @@ export const fetchUserAccess = (token, status) => {
 			});
 	};
 };
-
-// export const changeUserStatus = (status) => {
-// 	return {
-// 		type: USER_STATUS_CHANGED,
-// 		payload: status,
-// 	};
-// };

@@ -29,7 +29,7 @@ function Homepage() {
 			.get(`${process.env.REACT_APP_API}recipes/`)
 			.then((response) => response.data)
 			.then((data) => setRecipes(data));
-	}, []);
+	}, [recipes, filteredRecipes]);
 
 	return (
 		<div className="homepage">
