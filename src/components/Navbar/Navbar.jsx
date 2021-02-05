@@ -9,17 +9,17 @@ import IconLogout from "../../assets/images/logout.svg";
 function Navbar() {
 	const handleClick = () => {
 		localStorage.clear();
-		window.location.href = "/login";
+		window.location.href = "/";
 	};
 	return (
 		<div className="navbar">
-			<Link to={{ pathname: `/` }}>
+			<Link to={{ pathname: `/private` }}>
 				<img src={IconHomepage} alt="homepage" />
 			</Link>
-			<Link to={{ pathname: `/personal` }}>
+			<Link to={{ pathname: `/private/personal` }}>
 				<img src={IconUser} alt="recettes perso" />
 			</Link>
-			<Link to={{ pathname: `/add-recipe` }}>
+			<Link to={{ pathname: `/private/add-recipe` }}>
 				<img src={IconAdd} alt="ajouter une recette" />
 			</Link>
 

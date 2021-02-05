@@ -18,7 +18,7 @@ function HomepageRecipeCard({
 	taste,
 }) {
 	return (
-		<Link to={{ pathname: `/recipe/${id_recipe}` }} key={id_recipe}>
+		<Link to={{ pathname: `/private/recipe/${id_recipe}` }} key={id_recipe}>
 			<div className="recipe-card">
 				<img className="recipe-card-img" src={picture} alt={title} />
 				<div className="recipe-card-text">

@@ -17,7 +17,6 @@ function Homepage() {
 	const handleTaste = (tasteName) => {
 		setFiltering(!filtering);
 		setFilteredRecipes(recipes.filter((recipe) => recipe.taste === tasteName));
-		console.log(filteredRecipes);
 	};
 
 	useEffect(() => {

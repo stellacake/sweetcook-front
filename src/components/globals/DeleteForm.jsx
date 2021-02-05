@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../../assets/css/styles.css";
 
 function DeleteForm({ recipeId, recipeTitle, setDeleteModal, deleteModal }) {
 	const [formMessage, setFormMessage] = useState("");
 	const [modalOpen, setModalOpen] = useState(false);
+
+	const history = useHistory();
 
 	const handleErrorMessage = () => {
 		setFormMessage(
@@ -14,7 +17,7 @@ function DeleteForm({ recipeId, recipeTitle, setDeleteModal, deleteModal }) {
 
 	const closeModal = () => {
 		setModalOpen(false);
-		document.location.reload();
+		history.push("/private/personal");
 	};
 
 	const handleDelete = () => {
@@ -25,15 +28,14 @@ function DeleteForm({ recipeId, recipeTitle, setDeleteModal, deleteModal }) {
 				handleErrorMessage(err);
 			});
 		setModalOpen(true);
-		console.log(recipeId);
 	};
 
 	return (
 		<div className="personal-space-modal-open">
 			<h2>Êtes-vous sûr(e) de vouloir supprimer "{recipeTitle}" ?</h2>
 			<div className="personal-space-buttons">
-				<button onClick={setDeleteModal(!deleteModal)}>Annuler</button>
-				<button onClick={() => handleDelete()}>Confirmer</button>
+				<button onClick={() => setDeleteModal(!deleteModal)}>Annuler</button>
+				<button onClick={() => handleDelete}>Confirmer</button>
 			</div>
 			{modalOpen && (
 				<div>

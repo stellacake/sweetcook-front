@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import "../../assets/css/styles.css";
+import { useHistory } from "react-router-dom";
 
 function EditForm({ recipeId }) {
 	const [recipe, setRecipe] = useState({
@@ -33,16 +34,17 @@ function EditForm({ recipeId }) {
 		step_10: "",
 	});
 
+	const [formMessage, setFormMessage] = useState("");
+	const [modalOpen, setModalOpen] = useState(false);
+
 	const handleChange = (e) => {
 		setRecipe({
 			...recipe,
 			[e.target.name]: e.target.value,
 		});
-		console.log(recipe);
 	};
 
-	const [formMessage, setFormMessage] = useState("");
-	const [modalOpen, setModalOpen] = useState(false);
+	const history = useHistory();
 
 	const handleErrorMessage = () => {
 		setFormMessage(
@@ -52,7 +54,7 @@ function EditForm({ recipeId }) {
 
 	const closeModal = () => {
 		setModalOpen(false);
-		document.location.reload();
+		history.push("/private/personal");
 	};
 
 	useEffect(() => {
@@ -62,7 +64,7 @@ function EditForm({ recipeId }) {
 			.then((data) => {
 				setRecipe(data[0]);
 			});
-	}, []);
+	}, [recipeId]);
 
 	const createRecipe = (e) => {
 		e.preventDefault();

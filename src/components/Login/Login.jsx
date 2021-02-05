@@ -7,7 +7,6 @@ import { Redirect } from "react-router-dom";
 import {
 	fetchUserTokenSuccess,
 	fetchUserTokenFailure,
-	// changeUserStatus,
 } from "../../redux/index";
 
 import "../../assets/css/styles.css";
@@ -18,7 +17,6 @@ function Login({
 	handleUserTokenError,
 	user,
 	location,
-	// handleChangeStatus,
 }) {
 	const [verificationData, setVerificationData] = useState({
 		name: "",
@@ -39,7 +37,7 @@ function Login({
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		axios
-			.post(`${process.env.REACT_APP_API}/login`, verificationData)
+			.post(`${process.env.REACT_APP_API}users/login`, verificationData)
 			.then((response) => {
 				handleUserTokenSuccess(response.data);
 				localStorage.setItem("authToken", response.data);
@@ -49,15 +47,10 @@ function Login({
 			});
 	};
 
-	// const handleOptionChange = (changeEvent) => {
-	// 	handleChangeStatus(changeEvent.target.value);
-	// 	localStorage.setItem("status", changeEvent.target.value);
-	// };
-
 	if (user.isAuthenticated) {
 		const { from } = location.state || {
 			from: {
-				pathname: user.admin !== 0 ? "/admin" : "/users",
+				pathname: "/private",
 			},
 		};
 		return <Redirect to={from} />;
@@ -101,7 +94,6 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch(fetchUserTokenSuccess(studentToken)),
 		handleUserTokenError: (errorMsg) =>
 			dispatch(fetchUserTokenFailure(errorMsg)),
-		// handleChangeStatus: (status) => dispatch(changeUserStatus(status)),
 	};
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
@@ -109,13 +101,11 @@ export default connect(mapStateToProps, mapDispatchToProps)(Login);
 Login.propTypes = {
 	user: PropTypes.shape({
 		isAuthenticated: PropTypes.bool.isRequired,
-		status: PropTypes.string.isRequired,
 		error: PropTypes.string.isRequired,
 	}).isRequired,
 	location: PropTypes.shape({
 		state: PropTypes.shape.isRequired,
 	}).isRequired,
-	handleChangeStatus: PropTypes.func.isRequired,
 	handleUserTokenError: PropTypes.func.isRequired,
 	handleUserTokenSuccess: PropTypes.func.isRequired,
 };

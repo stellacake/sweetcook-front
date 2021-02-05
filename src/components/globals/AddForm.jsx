@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 import "../../assets/css/styles.css";
@@ -35,6 +36,8 @@ function AddForm() {
 	});
 
 	const [userRecipe, setUserRecipe] = useState("");
+	const [formMessage, setFormMessage] = useState("");
+	const [modalOpen, setModalOpen] = useState(false);
 
 	const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -45,17 +48,14 @@ function AddForm() {
 		let yyyy = today.getFullYear();
 		return yyyy + "-" + mm + "-" + dd;
 	};
+	const history = useHistory();
 
 	const handleChange = (e) => {
 		setRecipe({
 			...recipe,
 			[e.target.name]: e.target.value,
 		});
-		console.log(recipe, userRecipe);
 	};
-
-	const [formMessage, setFormMessage] = useState("");
-	const [modalOpen, setModalOpen] = useState(false);
 
 	const handleErrorMessage = () => {
 		setFormMessage(
@@ -65,7 +65,7 @@ function AddForm() {
 
 	const closeModal = () => {
 		setModalOpen(false);
-		document.location.reload();
+		history.push("/private/personal");
 	};
 
 	useEffect(() => {

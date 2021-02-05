@@ -58,7 +58,7 @@ export const fetchUserAccess = (token) => {
 		dispatch(fetchUserAccessRequest());
 		axios
 			.post(
-				`${process.env.REACT_APP_API}/profile`,
+				`${process.env.REACT_APP_API}users/profile`,
 				{},
 				{
 					headers: {
