@@ -62,7 +62,7 @@ function EditForm({ recipeId }) {
 			.then((data) => {
 				setRecipe(data[0]);
 			});
-	}, [recipeId]);
+	}, []);
 
 	const createRecipe = (e) => {
 		e.preventDefault();

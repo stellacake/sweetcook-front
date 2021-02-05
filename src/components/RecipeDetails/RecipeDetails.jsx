@@ -16,7 +16,7 @@ function RecipeDetails({ match }) {
 			.get(`${process.env.REACT_APP_API}recipes/${idRecipe}`)
 			.then((response) => response.data)
 			.then((data) => setRecipe(data[0]));
-	}, [idRecipe]);
+	}, []);
 
 	return (
 		<div className="recipe-details">

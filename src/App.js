@@ -9,20 +9,21 @@ import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 
 import "./assets/css/styles.css";
+import PrivateRouting from "./components/globals/PrivateRouting";
 
 function App({ user, handleUserAccess }) {
 	useEffect(() => {
 		if (user.token.length !== 0) {
 			handleUserAccess(user.token);
 		}
-	}, [user.token, handleUserAccess]);
+	}, []);
 
 	return (
 		<div>
 			<Navbar />
 			<Switch>
 				<Route exact path="/login" component={Login} />
-				<PrivateRoute component={PrivateRoute} />
+				<PrivateRoute component={PrivateRouting} />
 			</Switch>
 		</div>
 	);
