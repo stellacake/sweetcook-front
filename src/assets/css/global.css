@@ -1,0 +1,54 @@
+* {
+	font-family: "Roboto", sans-serif;
+}
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-image: url("../images/tablecloth.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+#root {
+	/* height: 100%; */
+}
+
+h1,
+h2 {
+	text-align: center;
+}
+
+h3 {
+	margin: 0;
+	padding: 0;
+}
+
+a,
+a:link,
+a:active,
+a:visited {
+	text-decoration: none;
+	color: inherit;
+}
+
+a:hover {
+	cursor: pointer;
+}
+
+button {
+	width: 104px;
+	height: 32px;
+	background-color: #a7c1c5;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+	text-transform: uppercase;
+	border: none;
+	border-radius: 50px;
+	margin: 16px;
+	cursor: pointer;
+}

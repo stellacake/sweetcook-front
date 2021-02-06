@@ -1,0 +1,155 @@
+/* _____Homepage_____ */
+
+.homepage {
+	min-height: 100vh;
+	padding-bottom: 64px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+/* _____HomepageBrand_____ */
+
+.brand-label {
+	width: 80%;
+	height: 50vh;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-image: url("../images/label-blue.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position-x: center;
+	background-position-y: center;
+}
+
+.brand {
+	font-family: "Yusei Magic", sans-serif;
+	margin-bottom: 0;
+	font-size: 40px;
+}
+
+/* _____HomepageLatest_____ */
+
+.recipe-card {
+	width: 336px;
+	height: 88px;
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 16px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
+	border-radius: 8px;
+	margin: 16px;
+	display: flex;
+	box-sizing: border-box;
+}
+.recipe-card-img {
+	width: 30%;
+	object-fit: cover;
+	object-position: center;
+	margin: 0;
+	padding: 0;
+	border-top-left-radius: inherit;
+	border-bottom-left-radius: inherit;
+}
+.recipe-card-text {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+	font-size: 14px;
+	margin: 8px;
+}
+
+.recipe-card-text p {
+	margin: 0;
+	padding: 0;
+}
+
+.recipe-card-legend {
+	display: flex;
+	margin: 0;
+}
+.recipe-card-legend-item {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin-right: 8px;
+}
+
+.recipe-card-legend-item img {
+	height: 16px;
+}
+
+/* _____HomepageTasteFilters_____ */
+
+.taste-filters {
+	display: flex;
+	margin: 0 16px;
+	justify-content: space-between;
+}
+.taste-button {
+	height: 88px;
+	width: 45%;
+	border-radius: 8px;
+	cursor: pointer;
+	position: relative;
+}
+
+.taste-button img {
+	height: inherit;
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
+	margin: 0;
+	padding: 0;
+	border-radius: inherit;
+}
+
+.taste-button p {
+	display: block;
+	width: 100%;
+	top: -24px;
+	text-align: center;
+	color: white;
+	text-transform: uppercase;
+	text-shadow: black 1px 0 10px;
+	font-size: 32px;
+	font-weight: 900;
+	line-height: 88px;
+	position: absolute;
+
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+	.latest {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.taste-button {
+		height: 160px;
+		width: 320px;
+		margin: 0 32px;
+		border-radius: 8px;
+		cursor: pointer;
+	}
+
+	.taste-button p {
+		line-height: 160px;
+	}
+
+	.list {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+	}
+}
