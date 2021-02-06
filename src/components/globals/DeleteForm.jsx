@@ -42,11 +42,7 @@ function DeleteForm({ recipeId, recipeTitle, setDeleteModal, deleteModal }) {
 					<div className="experiment-start-modal-open" />
 					<div className="modal-text">
 						<p>{formMessage}</p>
-						<button
-							onClick={closeModal}
-							type="button"
-							className="signup-button"
-						>
+						<button onClick={closeModal} type="button">
 							OK
 						</button>
 					</div>

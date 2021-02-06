@@ -11,6 +11,8 @@ import Homepage from "./components/Homepage/Homepage";
 import AddRecipe from "./components/AddRecipe/AddRecipe";
 import RecipeDetails from "./components/RecipeDetails/RecipeDetails";
 import PersonalSpace from "./components/PersonalSpace/PersonalSpace";
+import AdminSpace from "./components/PersonalSpace/AdminSpace";
+import AddUser from "./components/AddUser/AddUser";
 
 import "./assets/css/styles.css";
 
@@ -23,20 +25,23 @@ function App({ user, handleUserAccess }) {
 
 	return (
 		<div>
-			<Navbar />
+			{user.isAuthenticated && <Navbar />}
+
 			<Switch>
 				<Route exact path="/" component={Login} />
 				<PrivateRoute exact path="/private" component={Homepage} />
 				<PrivateRoute exact path="/private/add-recipe" component={AddRecipe} />
+				<PrivateRoute exact path="/private/add-user" component={AddUser} />
 				<PrivateRoute
 					exact
 					path="/private/recipe/:idRecipe"
 					component={RecipeDetails}
 				/>
+
 				<PrivateRoute
 					exact
 					path="/private/personal"
-					component={PersonalSpace}
+					component={user.profile.admin !== 1 ? PersonalSpace : AdminSpace}
 				/>
 			</Switch>
 		</div>
@@ -58,6 +63,9 @@ App.propTypes = {
 	handleUserAccess: PropTypes.func.isRequired,
 	user: PropTypes.shape({
 		token: PropTypes.string.isRequired,
+		profile: PropTypes.shape({
+			admin: PropTypes.number.isRequired,
+		}).isRequired,
 	}).isRequired,
 };
 

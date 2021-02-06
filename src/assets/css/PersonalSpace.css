@@ -79,4 +79,10 @@
 	.personal-space-actions {
 		top: 0;
 	}
+
+	.overflow {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
 }

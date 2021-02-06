@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { connect } from "react-redux";
 
 import "../../assets/css/styles.css";
 
-function AddForm() {
+function AddForm({ user }) {
 	const [users, setUsers] = useState([]);
 	const [recipe, setRecipe] = useState({
 		title: "",
@@ -105,23 +106,25 @@ function AddForm() {
 			<form onSubmit={createRecipe}>
 				<div className="add-recipe-form">
 					<div className="form-block">
-						<label htmlFor="name">
-							Sélection de votre nom
-							<select
-								id="name"
-								name="name"
-								type="text"
-								onChange={(e) => setUserRecipe(e.target.value)}
-							>
-								<option value=""> </option>
-								{users &&
-									users.map((user) => (
-										<option key={user.id} value={user.id}>
-											{user.name}
-										</option>
-									))}
-							</select>
-						</label>
+						{user.profile.admin === 1 && (
+							<label htmlFor="name">
+								Sélection du nom
+								<select
+									id="name"
+									name="name"
+									type="text"
+									onChange={(e) => setUserRecipe(e.target.value)}
+								>
+									<option value=""> </option>
+									{users &&
+										users.map((user) => (
+											<option key={user.id} value={user.id}>
+												{user.name}
+											</option>
+										))}
+								</select>
+							</label>
+						)}
 						<label htmlFor="duration">
 							Titre de la recette
 							<input
@@ -226,11 +229,7 @@ function AddForm() {
 					<div className="experiment-start-modal-open" />
 					<div className="modal-text">
 						<p>{formMessage}</p>
-						<button
-							onClick={closeModal}
-							type="button"
-							className="signup-button"
-						>
+						<button onClick={closeModal} type="button">
 							OK
 						</button>
 					</div>
@@ -240,4 +239,10 @@ function AddForm() {
 	);
 }
 
-export default AddForm;
+const mapStateToProps = (state) => {
+	return {
+		user: state.user,
+	};
+};
+
+export default connect(mapStateToProps)(AddForm);

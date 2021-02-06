@@ -33,7 +33,7 @@ function RecipeDetails({ match }) {
 			<div className="recipe-card-legend">
 				<div className="recipe-card-legend-item">
 					<img src={IconTime} alt="durée" />
-					<p>durée : {recipe.duration} min</p>
+					<p>{recipe.duration} min</p>
 				</div>
 				<div className="recipe-card-legend-item">
 					<img src={IconWhisk} alt="difficulté" />
@@ -44,7 +44,7 @@ function RecipeDetails({ match }) {
 						src={recipe.taste === "salé" ? IconSalty : IconSweet}
 						alt="goût"
 					/>
-					<p>goût : {recipe.taste}</p>
+					<p>{recipe.taste}</p>
 				</div>
 			</div>
 			<div className="recipe-instructions">

@@ -1,37 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { connect } from "react-redux";
 
 import HomepageRecipeCard from "../Homepage/HomepageRecipeCard";
 import EditForm from "../globals/EditForm";
+import DeleteForm from "../globals/DeleteForm";
 
 import "../../assets/css/styles.css";
 import IconAdd from "../../assets/images/plus.svg";
 import IconEdit from "../../assets/images/edit.svg";
-
+import IconDelete from "../../assets/images/trash.svg";
 import IconBack from "../../assets/images/previous.svg";
 
-function PersonalSpace({ user }) {
+function AdminSpace() {
 	const [recipes, setRecipes] = useState([]);
 	const [editModal, setEditModal] = useState(false);
+	const [deleteModal, setDeleteModal] = useState(false);
 	const [recipeId, setRecipeId] = useState("");
+	const [recipeTitle, setRecipeTitle] = useState("");
 
 	const handleEdit = (id) => {
 		setEditModal(!editModal);
 		setRecipeId(id);
 	};
 
+	const handleDelete = ({ title, id }) => {
+		setDeleteModal(!deleteModal);
+		setRecipeTitle(title);
+		setRecipeId(id);
+	};
+
 	useEffect(() => {
 		axios
-			.get(`${process.env.REACT_APP_API}users/${user.profile.id}/recipes/`)
+			.get(`${process.env.REACT_APP_API}recipes/`)
 			.then((response) => response.data)
 			.then((data) => setRecipes(data));
-	}, [user.profile]);
+	}, []);
 
 	return (
 		<div className="personal-space">
-			<h1>Mes recettes</h1>
+			<h1>Recettes de la famille</h1>
 			<Link to={{ pathname: `/private/add-recipe` }}>
 				<img
 					className="personal-space-img"
@@ -59,6 +67,11 @@ function PersonalSpace({ user }) {
 									src={IconEdit}
 									alt="Modifier"
 								/>
+								<img
+									onClick={() => handleDelete(recipe.title, recipe.id_recipe)}
+									src={IconDelete}
+									alt="Supprimer"
+								/>
 							</div>
 						</div>
 					))}
@@ -73,14 +86,16 @@ function PersonalSpace({ user }) {
 					<EditForm recipeId={recipeId} />
 				</div>
 			)}
+			{deleteModal && (
+				<DeleteForm
+					recipeId={recipeId}
+					recipeTitle={recipeTitle}
+					setDeleteModal={setDeleteModal}
+					deleteModal={deleteModal}
+				/>
+			)}
 		</div>
 	);
 }
 
-const mapStateToProps = (state) => {
-	return {
-		user: state.user,
-	};
-};
-
-export default connect(mapStateToProps)(PersonalSpace);
+export default AdminSpace;
