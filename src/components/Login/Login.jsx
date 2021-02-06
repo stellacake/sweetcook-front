@@ -4,13 +4,16 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 
+import HomepageBrand from "../Homepage/HomepageBrand";
+
 import {
 	fetchUserTokenSuccess,
 	fetchUserTokenFailure,
 } from "../../redux/index";
 
 import "../../assets/css/styles.css";
-import HomepageBrand from "../Homepage/HomepageBrand";
+import Show from "../../assets/images/visible.svg";
+import Hide from "../../assets/images/invisible.svg";
 
 function Login({
 	handleUserTokenSuccess,
@@ -22,6 +25,8 @@ function Login({
 		name: "",
 		password: "",
 	});
+
+	const [showPassword, setShowPassword] = useState(false);
 
 	const handleChange = (e) => {
 		setVerificationData({
@@ -66,13 +71,25 @@ function Login({
 					className="login-input"
 					onChange={handleChange}
 				/>
-				<input
-					type="password"
-					name="password"
-					placeholder="Mot de passe"
-					className="login-input"
-					onChange={handleChange}
-				/>
+				<div className="pw-input">
+					<input
+						type={showPassword ? "text" : "password"}
+						name="password"
+						placeholder="Mot de passe"
+						className="login-input"
+						onChange={handleChange}
+					/>
+					<button
+						type="button"
+						className="pw-button"
+						onClick={() => setShowPassword(!showPassword)}
+					>
+						<img
+							src={showPassword ? Hide : Show}
+							alt={showPassword ? "Show password" : "Hide password"}
+						/>
+					</button>
+				</div>
 				<div>
 					<button type="submit">Connexion</button>
 				</div>

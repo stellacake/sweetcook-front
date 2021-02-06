@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import "../../assets/css/styles.css";
-import { useHistory } from "react-router-dom";
 
-function EditForm({ recipeId }) {
+function EditForm({ recipeId, setEditModal, editModal }) {
 	const [recipe, setRecipe] = useState({
 		title: "",
 		quantity: "",
@@ -44,8 +43,6 @@ function EditForm({ recipeId }) {
 		});
 	};
 
-	const history = useHistory();
-
 	const handleErrorMessage = () => {
 		setFormMessage(
 			`Erreur lors de la modification de la recette, veuillez réessayer ultérieurement.`
@@ -54,7 +51,7 @@ function EditForm({ recipeId }) {
 
 	const closeModal = () => {
 		setModalOpen(false);
-		history.push("/private/personal");
+		setEditModal(!editModal);
 	};
 
 	useEffect(() => {
@@ -167,7 +164,7 @@ function EditForm({ recipeId }) {
 							>
 								<option value=""> </option>
 								<option value="1">easy</option>
-								<option value="2">challenging</option>
+								<option value="2">medium</option>
 								<option value="3">hard</option>
 							</select>
 						</label>
@@ -340,14 +337,11 @@ function EditForm({ recipeId }) {
 				<button type="submit">Modifier !</button>
 			</form>
 			{modalOpen && (
-				<div>
-					<div className="experiment-start-modal-open" />
-					<div className="modal-text">
-						<p>{formMessage}</p>
-						<button onClick={closeModal} type="button">
-							OK
-						</button>
-					</div>
+				<div className="personal-space-modal-open">
+					<p>{formMessage}</p>
+					<button onClick={closeModal} type="button">
+						OK
+					</button>
 				</div>
 			)}
 		</div>

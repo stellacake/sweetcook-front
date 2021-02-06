@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 import "../../assets/css/styles.css";
+import Show from "../../assets/images/visible.svg";
+import Hide from "../../assets/images/invisible.svg";
 
 function AddUser() {
 	const [user, setUser] = useState({
@@ -14,8 +15,7 @@ function AddUser() {
 
 	const [formMessage, setFormMessage] = useState("");
 	const [modalOpen, setModalOpen] = useState(false);
-
-	const history = useHistory();
+	const [showPassword, setShowPassword] = useState(false);
 
 	const handleChange = (e) => {
 		setUser({
@@ -30,14 +30,16 @@ function AddUser() {
 
 	const closeModal = () => {
 		setModalOpen(false);
-		history.push("/private/add-user");
+		var form = document.getElementsByName("userform")[0];
+		form.reset();
+		return false;
 	};
 
 	const createUser = (e) => {
 		e.preventDefault();
 		axios
 			.post(`${process.env.REACT_APP_API}/users`, { ...user })
-			.then(() => setFormMessage(`Bien ouej !`), setModalOpen(true))
+			.then(() => setFormMessage(`Utilisateur ajouté !`), setModalOpen(true))
 			.catch((err) => {
 				handleErrorMessage(err);
 				setModalOpen(true);
@@ -47,7 +49,7 @@ function AddUser() {
 	return (
 		<div className="add-recipe">
 			<h1>Ajouter un utilisateur</h1>
-			<form onSubmit={createUser}>
+			<form name="userform" onSubmit={createUser}>
 				<div className="add-recipe-form">
 					<div className="form-block">
 						<label htmlFor="name">
@@ -68,14 +70,27 @@ function AddUser() {
 								onChange={handleChange}
 							/>
 						</label>
+
 						<label htmlFor="password">
 							Mot de passe
-							<input
-								id="password"
-								name="password"
-								type="password"
-								onChange={handleChange}
-							/>
+							<div className="pw-input">
+								<input
+									id="password"
+									name="password"
+									type={showPassword ? "text" : "password"}
+									onChange={handleChange}
+								/>
+								<button
+									type="button"
+									className="pw-button"
+									onClick={() => setShowPassword(!showPassword)}
+								>
+									<img
+										src={showPassword ? Hide : Show}
+										alt={showPassword ? "Show password" : "Hide password"}
+									/>
+								</button>
+							</div>
 						</label>
 
 						<label htmlFor="admin">
@@ -87,7 +102,6 @@ function AddUser() {
 								placeholder="rôle"
 								onChange={handleChange}
 							>
-								<option value=""> </option>
 								<option value="0">utilisateur</option>
 								<option value="1">admin</option>
 							</select>
@@ -97,14 +111,11 @@ function AddUser() {
 				<button type="submit">Ajouter !</button>
 			</form>
 			{modalOpen && (
-				<div>
-					<div className="experiment-start-modal-open" />
-					<div className="modal-text">
-						<p>{formMessage}</p>
-						<button onClick={closeModal} type="button">
-							OK
-						</button>
-					</div>
+				<div className="personal-space-modal-open">
+					<p>{formMessage}</p>
+					<button onClick={closeModal} type="button">
+						OK
+					</button>
 				</div>
 			)}
 		</div>

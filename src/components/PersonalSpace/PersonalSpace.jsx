@@ -70,7 +70,11 @@ function PersonalSpace({ user }) {
 						src={IconBack}
 						alt="fermer"
 					/>
-					<EditForm recipeId={recipeId} />
+					<EditForm
+						recipeId={recipeId}
+						setEditModal={setEditModal}
+						editModal={editModal}
+					/>
 				</div>
 			)}
 		</div>

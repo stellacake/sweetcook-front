@@ -39,13 +39,10 @@ function DeleteForm({ recipeId, recipeTitle, setDeleteModal, deleteModal }) {
 			</div>
 			{modalOpen && (
 				<div>
-					<div className="experiment-start-modal-open" />
-					<div className="modal-text">
-						<p>{formMessage}</p>
-						<button onClick={closeModal} type="button">
-							OK
-						</button>
-					</div>
+					<p>{formMessage}</p>
+					<button onClick={closeModal} type="button">
+						OK
+					</button>
 				</div>
 			)}
 		</div>

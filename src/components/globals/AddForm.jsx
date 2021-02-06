@@ -36,7 +36,7 @@ function AddForm({ user }) {
 		step_10: "",
 	});
 
-	const [userRecipe, setUserRecipe] = useState("");
+	const [userRecipe, setUserRecipe] = useState(user.profile.id);
 	const [formMessage, setFormMessage] = useState("");
 	const [modalOpen, setModalOpen] = useState(false);
 
@@ -174,7 +174,7 @@ function AddForm({ user }) {
 							>
 								<option value=""> </option>
 								<option value="1">easy</option>
-								<option value="2">challenging</option>
+								<option value="2">medium</option>
 								<option value="3">hard</option>
 							</select>
 						</label>
@@ -225,14 +225,11 @@ function AddForm({ user }) {
 				<button type="submit">Ajouter !</button>
 			</form>
 			{modalOpen && (
-				<div>
-					<div className="experiment-start-modal-open" />
-					<div className="modal-text">
-						<p>{formMessage}</p>
-						<button onClick={closeModal} type="button">
-							OK
-						</button>
-					</div>
+				<div className="personal-space-modal-open">
+					<p>{formMessage}</p>
+					<button onClick={closeModal} type="button">
+						OK
+					</button>
 				</div>
 			)}
 		</>
