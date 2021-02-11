@@ -24,10 +24,10 @@ function AdminSpace() {
 		setRecipeId(id);
 	};
 
-	const handleDelete = ({ title, id }) => {
+	const handleDelete = ({ title, id_recipe }) => {
 		setDeleteModal(!deleteModal);
 		setRecipeTitle(title);
-		setRecipeId(id);
+		setRecipeId(id_recipe);
 	};
 
 	useEffect(() => {
@@ -68,7 +68,7 @@ function AdminSpace() {
 									alt="Modifier"
 								/>
 								<img
-									onClick={() => handleDelete(recipe.title, recipe.id_recipe)}
+									onClick={() => handleDelete(recipe)}
 									src={IconDelete}
 									alt="Supprimer"
 								/>
